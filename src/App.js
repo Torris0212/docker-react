@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React Torris!
+          Learn React And CI/CI!
         </a>
       </header>
     </div>

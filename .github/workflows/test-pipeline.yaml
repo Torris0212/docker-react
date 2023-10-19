@@ -1,0 +1,16 @@
+name: test-pipeline
+on:
+  push:
+    branches-ignore:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      # build docker image
+      - run: docker build -t torris212/docker-react -f Dockerfile.dev .
+      # run container
+      - run: docker run -e CI=true torris212/docker-react npm test
